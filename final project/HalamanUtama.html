@@ -37,9 +37,9 @@
             </nav>
         </div>
     </header>
-    <section class="mt-4">
-        <div class="col">
-            <div class="container bg-dark text-light p-5 bg-opacity-75">
+    <section class="mt-4 flex-md-row d-flex align-items-center" style="height: 580px;">
+        <div class="col ">
+            <div class="container bg-dark text-light p-5 bg-opacity-75 ">
                 <div class="row">
                     <div class="col">
                         <label class="form-group" for="asalKota">Dari</label>
@@ -73,8 +73,16 @@
                         <input type="date" name="tglBerangkat" id="tglBerangkat" class="form-control">
                     </div>
                     <div class="col">
-                        <a href="#" class="btn btn-info mt-4 px-4">Cari</a>
+                        <label class="form-group" for="tglPulang">Tanggal Pulang</label>
+                        <input type="date" name="tglPulang" id="tglPulang" class="form-control">
+                    </div>
+                    <div class="col">
+                        <label for="jmlPenumpang">Jumlah Penumpang</label>
+                        <input type="text" class="form-control" id="jmlPenumpang" placeholder="Jumlah Penumpang..." required>
+                    </div>
 
+                    <div class="col">
+                        <a href="#" class="btn btn-info mt-4 px-5">Cari</a>
                     </div>
                     
                 </div>
