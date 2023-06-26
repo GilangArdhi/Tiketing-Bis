@@ -55,8 +55,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <section class="mt-4 flex-md-row d-flex align-items-center" style="height: 580px;">
         <div class="col ">
             <div class="container bg-dark text-light p-5 bg-opacity-75 ">
+                <?php echo form_open('Home/filter') ?>
                 <div class="row">
-                    <?php echo form_open('Home/filter') ?>
                     <div class="col">
                         <label class="form-group" for="asalKota">Dari</label>
                         <select class="form-control" name="asalKota">
@@ -99,10 +99,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
 
                     <div class="col">
-                        <a href="#" class="btn btn-info mt-4 px-5">Cari</a>
+                        <button type="submit" class="btn btn-info mt-4 px-5">Cari</button>
                     </div>
-                    <?php echo form_close() ?>
                 </div>
+                <?php echo form_close() ?>
             </div>
         </div>
     </section>

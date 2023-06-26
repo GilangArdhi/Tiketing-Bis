@@ -17,7 +17,7 @@
 </head>
 <body  class="background">
     
-    <div class="mt-5">
+    <div class="my-5">
         <div class="container bg-dark text-light p-5 bg-opacity-75" style="width: 500px;">
             <div class="form-group pt-0 mt-3">
                 <h1 class="text-center mb-5">LOGIN</h1>
@@ -40,6 +40,7 @@
             <div>
                 <p class="text-center">Belum punya akun? <a class="text-decoration-none text-light" href="<?php form_open('Home/index') ?>">Daftar Sekarang</a></p>
             </div>
+            <?php echo form_close() ?>
         </div>
     </div>
 </body>
