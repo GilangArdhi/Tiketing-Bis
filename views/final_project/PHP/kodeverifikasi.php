@@ -45,7 +45,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <?php echo form_close(); ?>
 
             <div class="d-flex justify-content-center mt-3">
-                <label><a href="<?php echo base_url() ?>forgotpassword" class="text-decoration-none text-white">Kirim ulang kode</a></label>
+                <?php echo form_open('Home/masukkanEmail2')?>
+                <label><button class="btn text-decoration-none text-white">Kirim ulang kode</button></label>
+                <?php echo form_close(); ?>
             </div>
         </div>
     </div>

@@ -53,6 +53,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         <li><a class="dropdown-item" href="<?php echo base_url() ?>hubungikami"><i class="bi bi-chat-left-text"></i> Hubungi Admin</a></li>
                                         <li><a class="dropdown-item" href="<?php echo base_url() ?>tentangKami"><i class="bi bi-gear"></i> Tentang Kami</a></li>
                                     </ul>
+                                <?php else: ?>
+                                    <a href="<?php echo base_url() ?>Login" class="btn btn-success nav-link text-white">Login</a>
+                                    <a href="<?php echo base_url() ?>Daftar" class="btn btn-primary nav-link text-white mx-2">Daftar</a>
                                 <?php endif; ?>
                             </div>
                         </nav>
