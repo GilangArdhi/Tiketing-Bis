@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+
+    </style>
+</head>
+<body>
+    
+    <header>
+        <div class="container-fluid bg-white">
+            <nav class="navbar bg-white">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="/Pemesanan_Tiket_Bus/travelin-logo-zip-file(1)/png/logo-no-background.png" 
+                        class="img-fluid w-25 p-1" alt="logo">
+                    </a>
+                    <div class="float-end">
+                        <nav class="nav flex-md-row d-flex align-items-center">
+                            <i class="bi bi-clock-history mx-2"></i>
+                            <p class="text-center pt-2">|</p>
+                            <img src="/Pemesanan_Tiket_Bus/icons8-male-user-96.png" class="img-fluid rounded-circle w-25 p-1" alt="fotoprofil">
+                            <a class="nav-link text-dark" href="#">User</a>
+                        </nav>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="container-fluid bg-primary">
+            <div class="row">
+                <div class="col-md-10 d-flex justify-content-center py-3">
+                    <div>
+                        <label for="asalKota"></label>
+                        <i class="bi bi-arrow-right text-white"></i>
+                        <label for="kotaTujuan"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="bg-light">
+        <div class="row">
+            <div class="col-4">
+                <div class="mx-md-3 mt-3">
+                    <b>Pilih Metode Pembayaran</b>
+                </div>
+                <div class="container bg-white mx-md-3 my-2 p-1">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                               <td>
+                                   <div class="form-check m-0 py-2  d-flex align-items-center ">
+                                       <input type="radio" class="form-check-input " style="width: 90px;" id="bankBCA" name="optradio" value="option1">
+                                       <label class="form-check-label mx-2" for="bankBCA">
+                                           <img src="https://github.com/GilangArdhi/Tiketing-Bis/blob/main/final%20project/Pemesanan_Tiket_Bus/2560px-Bank_Central_Asia.svg.png?raw=true" class="img-fluid rounded w-25 p-1" alt="bankBCA">
+                                       </label>
+                                   </div>
+                               </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check m-0 py-2  d-flex align-items-center ">
+                                        <input type="radio" class="form-check-input" style="width: 180px;" id="bankMandiri" name="optradio" value="option2">
+                                        <label class="form-check-label mx-3" for="bankMandiri">
+                                            <img src="https://github.com/GilangArdhi/Tiketing-Bis/blob/main/final%20project/Pemesanan_Tiket_Bus/Mandiri_logo.png?raw=true" class="img-fluid rounded w-25" alt="bankMandiri">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check m-0 py-2  d-flex align-items-center ">
+                                        <input type="radio" class="form-check-input" style="width: 90px;" id="bankBNI" name="optradio" value="option3">
+                                        <label class="form-check-label mx-2" for="bankBNI">
+                                            <img src="https://github.com/GilangArdhi/Tiketing-Bis/blob/main/final%20project/Pemesanan_Tiket_Bus/2560px-BNI_logo.svg.png?raw=true" class="img-fluid rounded w-25 p-1" alt="bankBNI">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check m-0 py-2  d-flex align-items-center ">
+                                        <input type="radio" class="form-check-input" style="width: 90px;" id="bankBRI" name="optradio" value="option4">
+                                        <label class="form-check-label mx-2" for="bankBRI">
+                                            <img src="https://github.com/GilangArdhi/Tiketing-Bis/blob/main/final%20project/Pemesanan_Tiket_Bus/Logo_BRI.png?raw=true" class="img-fluid rounded w-25 p-1" alt="bankBRI">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-check m-0 py-2  d-flex align-items-center ">
+                                        <input type="radio" class="form-check-input" style="width: 120px;" id="gopay" name="optradio" value="option5">
+                                        <label class="form-check-label mx-2" for="gopay">
+                                            <img src="https://github.com/GilangArdhi/Tiketing-Bis/blob/main/final%20project/Pemesanan_Tiket_Bus/Logo%20GoPay%20(PNG-1080p)%20-%20FileVector69.png?raw=true" class="img-fluid rounded w-25 p-1" alt="gopay">
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-6">
+                <div class="container-sm bg-white mt-5 p-2">
+                    <div class="border-bottom pt-3">
+                        <div class="row">
+                            <div class="col-2">
+                                <img src="" alt="logoBis">
+                            </div>
+                            <div class="col-2">
+                                <p class="text-primary"><b>Nama Bis</b></p>
+                            </div>
+                            <div class="col-2">
+                                <p class="text-secondary">Jenis Bis</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-2 border-bottom">
+                        <div class="row">
+                            <div class="col-2">
+                                <img src="" alt="iconKalender">
+                            </div>
+                            <div class="col-8">
+                                <div class="row">
+                                    <b>Keberangkatan</b>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        Tanggal
+                                    </div>
+                                    <div class="col">
+                                        Jam Berangkat
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="row text-secondary">
+                                    Kursi
+                                </div>
+                                <div class="row">
+                                    No.Kursi
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row border-bottom">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img src="" alt="icon location">
+                                </div>
+                                <div class="col-5">
+                                    <div class="row">
+                                        <b>Titik Keberangkatan</b>
+                                    </div>
+                                    <div class="row">
+                                        <P>Kota Asal</P>
+                                    </div>
+                                    <div class="row text-muted">
+                                        <p>Halte awal</p>
+                                    </div>
+                                </div>
+                                <div class="col-5">
+                                    <div class="row">
+                                        <b>Titik Estimasi</b>
+                                    </div>
+                                    <div class="row">
+                                        <p>Kota Tujuan</p>
+                                    </div>
+                                    <div class="row text-muted">
+                                        <p>Halte akhir</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-info mt-2 mb-3">
+                        <img src="" alt="iconUser">
+                        Nama 
+                    </div>
+                </div>
+
+                <div class="container-sm bg-white mt-3 p-3">
+                    <h5 class="container-fluid text-bg-primary">Rincian Harga</h5>
+                    <div class="row">
+                        <div class="col text-muted">
+                            Harga selanjutnya
+                        </div>
+                        <div class="col text-muted d-flex justify-content-end">
+                            Harga
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-dark">
+                            <b>Total Harga</b>
+                        </div>
+                        <div class="col text-dark d-flex justify-content-end">
+                            Harga
+                        </div>
+                    </div>
+                </div>
+                <div class="float-end">
+                    <button type="button" class="btn btn-primary px-4 mt-3"><b>Bayar</b></button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
