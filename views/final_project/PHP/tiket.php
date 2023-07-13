@@ -113,7 +113,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <?php foreach ($kursiTerpesan as $kursi): ?>
                         <td>Nomor Kursi</td>
                         <td>: <?php echo $kursi->kursiDipesan ?></td>
-                    <?php endforeach ?>
+                    <?php endforeach; ?>
                     </tr>
                 <?php endif; ?>
             </tbody>
