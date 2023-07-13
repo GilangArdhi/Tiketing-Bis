@@ -138,9 +138,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <b>Jenis Kelamin</b>
                             <p></p>
                             <select name="jenis_kelamin" class="form-select">
-                                <option selected>Pilh Jenis Kelamin</option>
-                                <option value="Laki - Laki">Laki - Laki</option>
-                                <option value="Perempuan">Perempuan</option>
+                                <option selected>Pilih Jenis Kelamin</option>
+                                <option value="Laki - Laki" <?php echo ($userData->jenis_kelamin == 'Laki - Laki') ? 'selected' : ''; ?>>Laki - Laki</option>
+                                <option value="Perempuan" <?php echo ($userData->jenis_kelamin == 'Perempuan') ? 'selected' : ''; ?>>Perempuan</option>
                             </select>
                             <!--span><input type="radio" name="jeniskelamin" value="Laki-Laki"> Laki - Laki
                         &nbsp;&nbsp;<input type="radio" name="jeniskelamin" value="Perempuan"> Perempuan</span-->
@@ -159,18 +159,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col-md-3 d-flex align-items-center px-4">
                         <div class="shield">
                             <b>Ubah Password</b>
-                            <input type="password" name="pass" id="inputPassword">
+                            <a href="<?php echo base_url()?>UbahSandi" class="btn btn-primary text-white">Ubah Sandi</a>
+                            <!-- <input type="password" name="pass" id="inputPassword"> -->
                             <p id="passwordErrorMessage" style="color: red; display: none;">Silahkan input password
                                 dengan benar!</p>
                             <p></p>
-                            <b>Ketik ulang Password</b>
+                            <!-- <b>Ketik ulang Password</b>
                             <input type="password" name="pass1" id="inputPassword2">
                             <p></p>
                             <input type="checkbox" onclick="tampilpw()">Tampilkan Password
                             <p></p>
-                            <!--button onclick="validasiPassword()" class="submit-button bg-primary text-white border-white float-end">Simpan</button-->
+                            < !--button onclick="validasiPassword()" class="submit-button bg-primary text-white border-white float-end">Simpan</button- ->
                             <p id="passwordError" style="color: red; display: none;">Password tidak sesuai!</p>
-                            <p id="successMessage" style="color: green; display: none;">Password berhasil direset!</p>
+                            <p id="successMessage" style="color: green; display: none;">Password berhasil direset!</p> -->
                         </div>
                     </div>
                 </div>
@@ -192,7 +193,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col-md-3 d-flex align-items-center px-4 my-3">
                         <div class="nama-lengkap">
                             <b>Nama Lengkap</b>
-                            <input type="text" name="txtnama">
+                            <input type="text" name="txtnama" value="<?php echo $userData->nama ?>">
                             <p></p>
                         </div>
                     </div>
@@ -207,7 +208,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="col-md-2 d-flex align-items-center px-4 my-3">
                         <div class="usia">
                             <b>Usia</b>
-                            <input type="number" id="usia-input" name="age">
+                            <input type="number" id="usia-input" name="age" value="<?php echo $userData->umur ?>">
                             <p></p>
                             <!--button onclick="return validasiUsia()" class="submit-button bg-primary text-white border-white float-end">Simpan</button-->
                         </div>
@@ -225,14 +226,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="no-ponsel">
                             <b> No. Ponsel</b>
                             <p></p>
-                            <input type="text" name="nohp" id="nomor-ponsel-input" oninput="validatePhoneNumber()">
+                            <input type="text" name="nohp" id="nomor-ponsel-input" oninput="validatePhoneNumber()" value="<?php echo $userData->noHP ?>">
                         </div>
                     </div>
                 </div>
                 <!--hr class="grsemail"-->
 
                 <!-- Ubah Email -->
-                <div class="row py-5">
+                <!-- <div class="row py-5">
                     <div class="col-md-2 d-flex align-content-start">
                         <div class="envelope">
                             <i class="bi bi-envelope icon"></i>
@@ -242,16 +243,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="email">
                             <b>Ubah Email</b>
                             <input type="text" name="txtemail" id="inputEmail">
-                            <!--p id="emailErrorMessage" style="color: red; display: none;">Pastikan data terisi dengan benar sebelum klik <b>Simpan</b></p-->
+                            < !--p id="emailErrorMessage" style="color: red; display: none;">Pastikan data terisi dengan benar sebelum klik <b>Simpan</b></p-- >
                             <p></p>
-                            <!--button onclick="validasiEmail()"
-                            class="submit-button bg-primary text-white border-white float-end">Simpan</button-->
+                            < !--button onclick="validasiEmail()"
+                            class="submit-button bg-primary text-white border-white float-end">Simpan</button-- >
                             <p id="emailSuccessMessage" style="color: green; display: none;">Email anda berhasil diubah!
-                                <!--br> Link verifikasi telah dikirim ke email kamu. <br> Segera cek email dan klik tombol <b>Verifikasi Email</b-->
+                                < !--br> Link verifikasi telah dikirim ke email kamu. <br> Segera cek email dan klik tombol <b>Verifikasi Email</b-- >
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row">
                     <div class="col-md-6 py-5 text-end">

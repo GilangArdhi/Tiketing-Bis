@@ -36,13 +36,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <input type="checkbox" onclick="tampilpw()">Tampilkan Password
             </div>
             <div class="text-end mx-5 mb-4">
-                <a class="text-decoration-none text-light" href="<?php echo base_url()?>forgotpassword">forgot password?</a>
+                <a class="text-decoration-none text-light" href="<?php echo base_url()?>forgotpassword">Lupa Kata Sandi?</a>
             </div>
             <div class="text-center">
                 <button class="btn btn-primary my-2 px-4">Login</button>
             </div>
             <div>
-                <p class="text-center">Belum punya akun? <a class="text-decoration-none text-light" href="<?php echo base_url()?>">Daftar Sekarang</a></p>
+                <p class="text-center">Belum punya akun? <a class="text-decoration-none text-light" href="<?php echo base_url()?>Daftar">Daftar Sekarang</a></p>
             </div>
             <?php echo form_close() ?>
         </div>

@@ -176,7 +176,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </div>
             <hr>
 
-            <div class="col-md-1 d-flex align-content-center px-5">
+            <!-- <div class="col-md-1 d-flex align-content-center px-5">
                 <div class="password">
                     <i class="bi bi-shield-lock icon"></i>
                 </div>
@@ -185,15 +185,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="kata-sandi">
                     <b>Password</b><br>
                     <span id="password" type="password">
-                        <?php if (!empty($userData)): ?>
+                        < ?php if (!empty($userData)): ?>
                             <p>
-                                <?php echo $userData->pass ?>
+                                < ?php echo $userData->pass ?>
                             </p>
-                        <?php endif; ?>
+                        < ?php endif; ?>
                     </span>
                 </div>
-            </div>
-            <hr>
+            </div> -->
+            <!-- <hr> -->
 
             <div class="col-md-1 d-flex align-content-center px-5">
                 <div class="phone">

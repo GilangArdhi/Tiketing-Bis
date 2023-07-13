@@ -47,15 +47,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                         <?php echo $userData->nama; ?>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="<?php echo base_url() ?>profil"><i class="bi bi-person"></i> Profil</a></li>
-                                        <li><a class="dropdown-item" href="<?php echo base_url() ?>riwayatPembelian"><i class="bi bi-clock-history"></i> Riwayat</a></li>
-                                        <li><a class="dropdown-item" href="<?php echo base_url() ?>faq"><i class="bi bi-info-circle"></i> FAQ</a></li>
-                                        <li><a class="dropdown-item" href="<?php echo base_url() ?>hubungikami"><i class="bi bi-chat-left-text"></i> Hubungi Admin</a></li>
-                                        <li><a class="dropdown-item" href="<?php echo base_url() ?>tentangKami"><i class="bi bi-gear"></i> Tentang Kami</a></li>
+                                        <li><a class="dropdown-item" href="<?php echo base_url() ?>profil"><i
+                                                    class="bi bi-person"></i> Profil</a></li>
+                                        <li><a class="dropdown-item" href="<?php echo base_url() ?>riwayatPembelian"><i
+                                                    class="bi bi-clock-history"></i> Riwayat</a></li>
+                                        <li><a class="dropdown-item" href="<?php echo base_url() ?>faq"><i
+                                                    class="bi bi-info-circle"></i> FAQ</a></li>
+                                        <li><a class="dropdown-item" href="<?php echo base_url() ?>hubungikami"><i
+                                                    class="bi bi-chat-left-text"></i> Hubungi Admin</a></li>
+                                        <li><a class="dropdown-item" href="<?php echo base_url() ?>tentangKami"><i
+                                                    class="bi bi-gear"></i> Tentang Kami</a></li>
                                     </ul>
                                 <?php else: ?>
-                                    <a href="<?php echo base_url() ?>Login" class="btn btn-success nav-link text-white">Login</a>
-                                    <a href="<?php echo base_url() ?>Daftar" class="btn btn-primary nav-link text-white mx-2">Daftar</a>
+                                    <a href="<?php echo base_url() ?>Login"
+                                        class="btn btn-success nav-link text-white">Login</a>
+                                    <a href="<?php echo base_url() ?>Daftar"
+                                        class="btn btn-primary nav-link text-white mx-2">Daftar</a>
                                 <?php endif; ?>
                             </div>
                         </nav>
@@ -118,6 +125,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </div>
         </div>
     </section>
+    <script>
+        var berangkat = document.getElementById("tglBerangkat")
+        var Pulang = document.getElementById("tglPulang");
+
+        var today = new Date().toISOString().split('T')[0];
+        document.getElementById("tglBerangkat").setAttribute('min', today);
+        // document.getElementById("tglPulang").setAttribute('min', today);
+        berangkat.addEventListener("change", function () {
+            Pulang.min = berangkat.value;
+        });
+    </script>
 </body>
 
 </html>
