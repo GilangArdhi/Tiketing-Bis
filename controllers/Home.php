@@ -15,20 +15,33 @@ class Home extends CI_Controller
         // if($this->session->userdata('userData')){
         //     var_dump($this->session->userdata('userData'));
         // }
-        $this->load->view('final_project/PHP/halamanUtama', array('userData' => $userData));
+        //ada@gmail.com
+        if (empty($userData->email)){
+            $this->load->view('userView/PHP/halamanUtama', array('userData' => $userData));
+        } else if ($userData->email == 'ada@gmail.com'){
+            return redirect('Admin');
+        } else {
+            $this->load->view('userView/PHP/halamanUtama', array('userData' => $userData));
+
+        }
+        
     }
 
-    public function halUtama()
-    {
-        $userData = $this->session->userdata('userData');
-        // if($this->session->userdata('userData')){
-        //     var_dump($this->session->userdata('userData'));
-        // }
-        $this->load->view('final_project/PHP/halamanUtama', array('userData' => $userData));
-    }
+    // public function halUtama()
+    // {
+    //     $userData = $this->session->userdata('userData');
+    //     // if($this->session->userdata('userData')){
+    //     //     var_dump($this->session->userdata('userData'));
+    //     // }
+    //     $this->load->view('userView/PHP/halamanUtama', array('userData' => $userData));
+    // }
     public function login()
     {
-        $this->load->view('final_project/PHP/login');
+        $this->load->view('userView/PHP/login');
+    }
+    public function daftar()
+    {
+        $this->load->view('userView/PHP/daftar');
     }
     public function pilihBis()
     {
@@ -37,11 +50,11 @@ class Home extends CI_Controller
         // $dbBis = $this->session->userdata('jadwal_bis');
         $this->load->model('Database');
         $dbBis['jadwal_bis'] = $this->Database->dataBis($objFilter['kotaAsal'], $objFilter['tujuanKota']);
-        if ($dbBis['jadwal_bis']) {
-            $this->load->view('final_project/PHP/pilihBis', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwal_bis' => $dbBis['jadwal_bis']));
+        // if ($dbBis['jadwal_bis']) {
+            $this->load->view('userView/PHP/pilihBis', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwal_bis' => $dbBis['jadwal_bis']));
             // return redirect('pilihBis');
-        }
-        // $this->load->view('final_project/PHP/pilihBis', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwal_bis' => $dbBis['jadwal_bis']));
+        // }
+        // $this->load->view('userView/PHP/pilihBis', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwal_bis' => $dbBis['jadwal_bis']));
     }
     public function pilihKursi()
     {
@@ -51,8 +64,8 @@ class Home extends CI_Controller
         $this->load->model('Database');
         $jadwalDipilih['jadwalTerpilih'] = $this->Database->dataBisTerpilih($id);
         $kursiTerpilih['kursiTerpesan'] = $this->Database->kursiTerpesan($id);
-        $this->load->view('final_project/PHP/pilihKursi', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwalTerpilih' => $jadwalDipilih['jadwalTerpilih'], 'kursiTerpesan' => $kursiTerpilih['kursiTerpesan']));
-        // redirect('final_project/PHP/pilihKursi');
+        $this->load->view('userView/PHP/pilihKursi', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwalTerpilih' => $jadwalDipilih['jadwalTerpilih'], 'kursiTerpesan' => $kursiTerpilih['kursiTerpesan']));
+        // redirect('userView/PHP/pilihKursi');
     }
     public function pesan()
     {
@@ -61,8 +74,8 @@ class Home extends CI_Controller
         $id = $this->session->userdata('id');
         $this->load->model('Database');
         $jadwalDipilih['jadwalTerpilih'] = $this->Database->dataBisTerpilih($id);
-        $this->load->view('final_project/PHP/pesan', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwalTerpilih' => $jadwalDipilih['jadwalTerpilih']));
-        // redirect('final_project/PHP/pilihKursi');
+        $this->load->view('userView/PHP/pesan', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwalTerpilih' => $jadwalDipilih['jadwalTerpilih']));
+        // redirect('userView/PHP/pilihKursi');
     }
 
     public function caraPembayaran()
@@ -74,7 +87,7 @@ class Home extends CI_Controller
         $bank['tampilBank'] = $this->Database->tampilBank();
         // var_dump($bank['tampilBank']);
         $jadwalDipilih['jadwalTerpilih'] = $this->Database->dataBisTerpilih($id);
-        $this->load->view('final_project/PHP/payment', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwalTerpilih' => $jadwalDipilih['jadwalTerpilih'], 'tampilBank' => $bank['tampilBank']));
+        $this->load->view('userView/PHP/payment', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwalTerpilih' => $jadwalDipilih['jadwalTerpilih'], 'tampilBank' => $bank['tampilBank']));
     }
 
     public function pembayaranAkhir()
@@ -96,7 +109,7 @@ class Home extends CI_Controller
         // Cek apakah waktu hitungan mundur telah habis
         if ($selisihMenit <= 0) {
             // Jika waktu habis, redirect ke halaman tertentu
-            redirect('halamanUtama');
+            redirect('Home');
         }
 
         // Kirim data hitungan mundur ke view
@@ -108,7 +121,7 @@ class Home extends CI_Controller
         $bankTerpilih['dipilihBank'] = $this->Database->pilihBank($id_bank);
         $jadwalDipilih['jadwalTerpilih'] = $this->Database->dataBisTerpilih($id);
         $this->load->view(
-            'final_project/PHP/payment2',
+            'userView/PHP/payment2',
             array(
                 'userData' => $userData,
                 'objFilter' => $objFilter,
@@ -127,38 +140,38 @@ class Home extends CI_Controller
     public function profil()
     {
         $userData = $this->session->userdata('userData');
-        $this->load->view('final_project/PHP/profil', array('userData' => $userData));
+        $this->load->view('userView/PHP/profil', array('userData' => $userData));
     }
     public function coba()
     {
         $userData = $this->session->userdata('userData');
-        $this->load->view('final_project/PHP/pilihBis', array('userData' => $userData));
+        $this->load->view('userView/PHP/pilihBis', array('userData' => $userData));
     }
     public function editProfil()
     {
         $userData = $this->session->userdata('userData');
         // $dtUsers = $this->session->userdata('dtUsers');
         // var_dump($dtUsers);
-        $this->load->view('final_project/PHP/edit_profil', array('userData' => $userData));
+        $this->load->view('userView/PHP/edit_profil', array('userData' => $userData));
     }
 
     public function tentangKami()
     {
         $userData = $this->session->userdata('userData');
-        $this->load->view('final_project/PHP/tentangkami', array('userData' => $userData));
+        $this->load->view('userView/PHP/tentangkami', array('userData' => $userData));
     }
 
     public function syarat()
     {
         $userData = $this->session->userdata('userData');
-        $this->load->view('final_project/PHP/syaratketentuan', array('userData' => $userData));
+        $this->load->view('userView/PHP/syaratketentuan', array('userData' => $userData));
     }
     public function history()
     {
         $userData = $this->session->userdata('userData');
         $this->load->model('Database');
         $getHistory['history'] = $this->Database->getDataTransaction();
-        $this->load->view('final_project/PHP/history', array('userData' => $userData, 'history' => $getHistory['history']));
+        $this->load->view('userView/PHP/history', array('userData' => $userData, 'history' => $getHistory['history']));
     }
 
     public function pilihHistory()
@@ -177,24 +190,30 @@ class Home extends CI_Controller
         $this->load->model('Database');
         $riwayatDipilih['riwayatTerpilih'] = $this->Database->selectedHistory($id_order);
         // var_dump($riwayatDipilih['riwayatTerpilih']);
-        $this->load->view('final_project/PHP/rhistory', array('userData' => $userData, 'selectedHistory' => $riwayatDipilih['riwayatTerpilih']));
+        $this->load->view('userView/PHP/rhistory', array('userData' => $userData, 'selectedHistory' => $riwayatDipilih['riwayatTerpilih']));
     }
 
     public function faq()
     {
         $userData = $this->session->userdata('userData');
-        $this->load->view('final_project/PHP/FAQ', array('userData' => $userData));
+        $this->load->view('userView/PHP/FAQ', array('userData' => $userData));
     }
 
     public function hubKami()
     {
         $userData = $this->session->userdata('userData');
-        $this->load->view('final_project/PHP/hubungikami', array('userData' => $userData));
+        $this->load->view('userView/PHP/hubungikami', array('userData' => $userData));
     }
     public function fpass()
     {
         $userData = $this->session->userdata('userData');
-        $this->load->view('final_project/PHP/forgotpass', array('userData' => $userData));
+        $this->load->view('userView/PHP/forgotpass', array('userData' => $userData));
+    }
+
+    public function ubhSandi()
+    {
+        $userData = $this->session->userdata('userData');
+        $this->load->view('userView/PHP/editPass', array('userData' => $userData));
     }
 
     public function masukkanEmail()
@@ -259,18 +278,80 @@ class Home extends CI_Controller
             var_dump($kode);
         }*/
     }
+    public function masukkanEmail2()
+    {
+        $kode = rand(10000, 99999);
+        $to = $this->session->userdata('email');
+        $subject = 'Kode OTP';
+        $message = 'Kode Untuk Mereset Password Anda Adalah ' . $kode;
+        // Server settings
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.googlemail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'pharaschyte@gmail.com'; // ubah dengan alamat email Anda
+            $mail->Password = 'tygeoqaygpugkban'; // ubah dengan password email Anda
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+
+            $mail->setFrom('pharaschyte@gmail.com', 'Admin Travelin'); // ubah dengan alamat email Anda
+            $mail->addAddress($to);
+            // $mail->addReplyTo('alamatemailanda@gmail.com'); // ubah dengan alamat email Anda
+
+            // Isi Email
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body = $message;
+
+            $mail->send();
+
+            // Pesan Berhasil Kirim Email/Pesan Error
+            $this->session->set_userdata('kode', $kode);
+            $this->session->set_userdata('email', $to);
+            return redirect('kodeverifikasi');
+            // session()->setFlashdata('success', 'Selamat, email berhasil terkirim!');
+            // return redirect()->to('/email');
+        } catch (Exception $e) {
+            return redirect('forgotpassword');
+            // session()->setFlashdata('error', "Gagal mengirim email. Error: " . $mail->ErrorInfo);
+            // return redirect()->to('/email');
+        }
+
+        /*$this->load->library('phpmailer_lib');
+        $kode = rand(10000, 99999);
+        $to = $this->input->post('email');
+        $subject = 'Kode OTP';
+        $message = 'Kode Untuk Mereset Password Anda Adalah ' . $kode;
+        $fromEmail = 'admin@gmail.com';
+        $fromName = 'Admin';
+
+        if ($this->phpmailer_lib->send($to, $subject, $message, $fromEmail, $fromName)) {
+            $this->session->set_userdata('kode', $kode);
+            return redirect('kodeverifikasi');
+            // echo 'Email terkirim';
+        } else {
+            echo 'Gagal mengirim email';
+            echo $this->phpmailer_lib->mail->ErrorInfo;
+            // return redirect('forgotpassword');
+            var_dump($to);
+            var_dump($kode);
+        }*/
+    }
 
     public function verifikasi()
     {
         $userData = $this->session->userdata('userData');
         // $kodeOTP = $this->session->userdata('kode');
-        $this->load->view('final_project/PHP/kodeverifikasi', array('userData' => $userData));
+        $this->load->view('userView/PHP/kodeverifikasi', array('userData' => $userData));
     }
 
     public function validasiKodeOTP()
     {
         $kodeOTP = $this->session->userdata('kode');
-        var_dump($kodeOTP);
+        // var_dump($kodeOTP);
         $this->form_validation->set_rules('kode_verifikasi', 'Kode OTP', 'callback_check_otp');
         if ($this->form_validation->run() == FALSE) {
             // Validasi gagal, lakukan tindakan yang sesuai
@@ -298,7 +379,7 @@ class Home extends CI_Controller
     public function rstpass()
     {
         $userData = $this->session->userdata('userData');
-        $this->load->view('final_project/PHP/resetpassw', array('userData' => $userData));
+        $this->load->view('userView/PHP/resetpassw', array('userData' => $userData));
     }
 
     public function resetp()
@@ -360,17 +441,17 @@ class Home extends CI_Controller
                 if ($dataTable['users']) {
                     $userData = $dataTable['users'];
                     $this->session->set_userdata('userData', $userData);
-                    // $this->load->view('final_project/PHP/halamanUtama', array('userData' => $userData));
-                    return redirect('halamanUtama');
+                    // $this->load->view('userView/PHP/halamanUtama', array('userData' => $userData));
+                    return redirect('Home');
                 } else {
-                    $this->load->view('final_project/PHP/daftar');
+                    $this->load->view('userView/PHP/daftar');
                 }
             } else {
-                $this->load->view('final_project/PHP/daftar');
+                $this->load->view('userView/PHP/daftar');
             }
 
         } else {
-            $this->load->view('final_project/PHP/daftar');
+            $this->load->view('userView/PHP/daftar');
         }
 
     }
@@ -388,9 +469,9 @@ class Home extends CI_Controller
             $userData = $dataTable['users'];
             // Cetak data pengguna
             // print_r($userData);
-            // $this->load->view('final_project/PHP/halamanUtama', array('userData' => $userData));
+            // $this->load->view('userView/PHP/halamanUtama', array('userData' => $userData));
             $this->session->set_userdata('userData', $userData);
-            return redirect('halamanUtama');
+            return redirect('Home');
         } else {
             return redirect('Login');
         }
@@ -415,11 +496,11 @@ class Home extends CI_Controller
             // print_r($dbBis['jadwal_bis']);
             $this->session->set_userdata('objFilter', $objFilter);
 
-            // $this->load->view('final_project/PHP/pilihBis', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwal_bis' => $dbBis['jadwal_bis']));
+            // $this->load->view('userView/PHP/pilihBis', array('userData' => $userData, 'objFilter' => $objFilter, 'jadwal_bis' => $dbBis['jadwal_bis']));
             return redirect('pilihBis');
         }
 
-        // $this->load->view('final_project/PHP/pilihBis', array('userData' => $userData, 'objFilter' => $objFilter));
+        // $this->load->view('userView/PHP/pilihBis', array('userData' => $userData, 'objFilter' => $objFilter));
 
     }
 
@@ -477,38 +558,43 @@ class Home extends CI_Controller
 
     public function editData()
     {
+        $dataUser = $this->session->userdata('userData');
         $dtUsers = [
-            'email' => $this->input->post('txtemail'),
+            // 'email' => $this->input->post('txtemail'),
             'nama' => $this->input->post('txtnama'),
-            'pass' => $this->input->post('pass'),
+            // 'pass' => $this->input->post('pass'),
             'jenis_kelamin' => $this->input->post('jenis_kelamin'),
             'noHP' => $this->input->post('nohp'),
             'umur' => $this->input->post('age'),
-            'ftProfil' => $this->input->post('ftProfil'),
         ];
         $this->load->model('Database');
-        $editprofil['editUsers'] = $this->Database->editUsers($dtUsers['email'], $dtUsers);
-        // if ($editprofil['editUsers']) {
-        $dataTable['users'] = $this->Database->emailLogin($dtUsers['email'], $dtUsers['pass']);
-        if ($dataTable['users']) {
-            $userData = $dataTable['users'];
-            // $this->session->unset_userdata('userData', $userData);
-            $this->session->set_userdata('userData', $userData);
-            $userData = $this->session->userdata('userData');
-            print_r($userData);
-            // $this->load->view('final_project/PHP/profil', array('userData' => $userData));
-            return redirect('profil');
+        // $editprofil['editUsers'] = $this->Database->editUsers($dataUser->email, $dtUsers);
+        if ($this->Database->editUsers($dataUser->email, $dtUsers)) {
+            $dataTable['users'] = $this->Database->emailLogin($dataUser->email, $dataUser->pass);
+            if ($dataTable['users']) {
+                $userData = $dataTable['users'];
+                // $this->session->unset_userdata('userData', $userData);
+                $this->session->set_userdata('userData', $userData);
+                $userData = $this->session->userdata('userData');
+                print_r($userData);
+                // $this->load->view('userView/PHP/profil', array('userData' => $userData));
+                return redirect('profil');
+            } else {
+                echo ('gagal login');
+                // $this->load->view('userView/PHP/edit_profil');
+            }
         } else {
-            echo ('gagal login');
-            // $this->load->view('final_project/PHP/edit_profil');
+            // var_dump($editprofil['editUsers']);
+            var_dump($dataUser->email);
+            var_dump($dtUsers['pass']);
+
+            echo ('gagal update');
+            // $this->load->view('userView/PHP/edit_profil');
         }
-        // } else {
-        // echo ('gagal update');
-        // $this->load->view('final_project/PHP/edit_profil');
-        // }
     }
 
-    public function etiket(){
+    public function etiket()
+    {
         $userData = $this->session->userdata('userData');
         $objFilter = $this->session->userdata('objFilter');
         $email = $userData->email;
@@ -516,7 +602,7 @@ class Home extends CI_Controller
         $this->load->model('Database');
         // $jadwalDipilih['jadwalTerpilih'] = $this->Database->dataBisTerpilih($id);
         $kursiTerpilih['kursiTerpesan'] = $this->Database->pembayaranKursi($dataOrder['id_order']);
-        $tiketView= $this->load->view('final_project/PHP/tiket', array('userData' => $userData, 'objFilter' => $objFilter, 'dataOrder' => $dataOrder, 'kursiTerpesan'=>$kursiTerpilih['kursiTerpesan']), true);
+        $tiketView = $this->load->view('userView/PHP/tiket', array('userData' => $userData, 'objFilter' => $objFilter, 'dataOrder' => $dataOrder, 'kursiTerpesan' => $kursiTerpilih['kursiTerpesan']), true);
         if (!empty($tiketView)) {
             // View berhasil dimuat
             // Lakukan tindakan atau kembalikan nilai yang diinginkan
@@ -527,10 +613,11 @@ class Home extends CI_Controller
             // Lakukan tindakan atau kembalikan nilai yang diinginkan
             return false;
         }
-        
+
     }
 
-    public function valitiket(){
+    public function valitiket()
+    {
         if ($this->etiket()) {
             return redirect('kirimTiket');
         } else {
@@ -538,7 +625,7 @@ class Home extends CI_Controller
             // Misalnya, tampilkan pesan error atau kembalikan pengguna ke halaman sebelumnya
             // redirect('halamanSebelumnya');
             echo 'gagal cetak tiket';
-        } 
+        }
     }
 
     public function eTicket()
@@ -551,7 +638,7 @@ class Home extends CI_Controller
         $mail = new PHPMailer(true);
 
         try {
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
             $mail->isSMTP();
             $mail->Host = 'smtp.googlemail.com';
             $mail->SMTPAuth = true;
@@ -574,11 +661,38 @@ class Home extends CI_Controller
             // Pesan Berhasil Kirim Email/Pesan Error
             // session()->setFlashdata('success', 'Selamat, email berhasil terkirim!');
             // return redirect()->to('/email');
-            return redirect('halamanUtama');
+            return redirect('Home');
+            // $this->load->view('userView/PHP/halamanUtama', array('userData' => $userData));
         } catch (Exception $e) {
-            session()->setFlashdata('error', "Gagal mengirim email. Error: " . $mail->ErrorInfo);
+            // session()->setFlashdata('error', "Gagal mengirim email. Error: " . $mail->ErrorInfo);
             // return redirect()->to('/email');
         }
     }
+
+    public function logout(){
+        $this->session->sess_destroy();
+        return redirect('Home');
+    }
+
+    /*$this->load->library('phpmailer_lib');
+    $kode = rand(10000, 99999);
+    $to = $this->input->post('email');
+    $subject = 'Kode OTP';
+    $message = 'Kode Untuk Mereset Password Anda Adalah ' . $kode;
+    $fromEmail = 'admin@gmail.com';
+    $fromName = 'Admin';
+
+    if ($this->phpmailer_lib->send($to, $subject, $message, $fromEmail, $fromName)) {
+        $this->session->set_userdata('kode', $kode);
+        return redirect('kodeverifikasi');
+        // echo 'Email terkirim';
+    } else {
+        echo 'Gagal mengirim email';
+        echo $this->phpmailer_lib->mail->ErrorInfo;
+        // return redirect('forgotpassword');
+        var_dump($to);
+        var_dump($kode);
+    }*/
+
 
 }
